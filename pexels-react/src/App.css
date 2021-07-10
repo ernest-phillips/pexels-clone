@@ -1,3 +1,9 @@
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
 .App {
   text-align: center;
 }
@@ -35,4 +41,25 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/* Photo grid container */
+.photo-grid {
+  display: flex;
+  width: 50%;
+  position: relative;
+}
+
+.photos-column {
+  display: block;
+  flex-direction: column;
+  flex-basis: 0;
+  flex-grow: 1;
+  flex-shrink: 1;
+  margin-right: 1.45rem;
+  
+}
+.photo{
+  display: block;
+  
 }
