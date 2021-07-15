@@ -6,6 +6,7 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "braces": "^3.0.2",
     "dotenv": "^8.2.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -35,5 +36,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "netlify-cli": "^2.37.0"
   }
 }
