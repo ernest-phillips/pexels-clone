@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 
-const API_KEY= process.env.REACT_APP_API_KEY
+const API_KEY = process.env.REACT_APP_API_KEY;
 class App extends Component {
   constructor(props) {
     super(props);
@@ -10,13 +10,10 @@ class App extends Component {
       isLoaded: false,
     };
   }
-  
+
   componentDidMount() {
     let myHeaders = new Headers();
-    myHeaders.append(
-      "Authorization",
-      API_KEY
-    );
+    myHeaders.append("Authorization", API_KEY);
 
     let requestOptions = {
       method: "GET",
@@ -24,7 +21,7 @@ class App extends Component {
       redirect: "follow",
     };
     fetch(
-      "https://api.pexels.com/v1/curated?page=2&per_page=14",
+      "https://api.pexels.com/v1/curated?page=1&per_page=5",
       requestOptions
     )
       .then((response) => response.json())
@@ -32,7 +29,7 @@ class App extends Component {
         this.setState({
           isLoaded: true,
           photos: json.photos,
-          result: json.result,
+          next_page: json.next_page
         });
       })
       .then((response) => console.log(response))
@@ -40,8 +37,8 @@ class App extends Component {
   }
 
   render() {
-    let { isLoaded, photos, result } = this.state;
-
+    let { isLoaded, photos, next_page } = this.state;
+    
     if (!isLoaded) {
       return <div>Loading...</div>;
     } else {
@@ -53,17 +50,18 @@ class App extends Component {
                 <li key={photo.id} className="photo">
                   <a href={photo.src.large2x}>
                     <img
-                      src={photo.src.medium}
+                      src={photo.src.large}
                       alt={"Photo by " + photo.photographer}
                     ></img>
                   </a>
                 </li>
               ))}
             </ul>
+            
           </div>
 
           <div>
-            <button onClick="">{console.log("My Button")}</button>
+            <button onClick={console.log(next_page)}>More</button>
           </div>
         </div>
       );
