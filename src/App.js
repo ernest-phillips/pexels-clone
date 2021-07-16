@@ -57,7 +57,30 @@ class App extends Component {
                 </li>
               ))}
             </ul>
-            
+            <ul>
+              {photos.map((photo) => (
+                <li key={photo.id} className="photo">
+                  <a href={photo.src.large2x}>
+                    <img
+                      src={photo.src.large}
+                      alt={"Photo by " + photo.photographer}
+                    ></img>
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <ul>
+              {photos.map((photo) => (
+                <li key={photo.id} className="photo">
+                  <a href={photo.src.large2x}>
+                    <img
+                      src={photo.src.large}
+                      alt={"Photo by " + photo.photographer}
+                    ></img>
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
 
           <div>

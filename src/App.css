@@ -56,22 +56,20 @@ body {
 
 /* Photo grid container */
 .photo-grid {
-  /* display: flex; */
-  text-align: center;
+  display: flex;
+  /* text-align: center; */
   max-width: 1850px;
   padding-left: 2rem;
   padding-right: 2rem;
+  /* align-content: flex-start; */
+
+  width: 100%;
 }
 
 ul {
-  display: flex;
-  /* flex-wrap: wrap; */
-  /* flex-direction: column; */
   list-style: none;
-
-  flex-flow: column wrap;
-  height: 100%;
-  width: 1850px;
+  width: 100%;
+  background-color: #565e6d;
 }
 
 li {
@@ -83,13 +81,16 @@ li {
   vertical-align: bottom;
   max-height: 100%;
   margin: 1.5rem;
-  max-width: 263px;
+  object-fit: contain ;
+  /* max-width: 263px; */
+  /* flex-shrink: 1; */
 }
 
 img {
   height: auto;
-  flex-basis: 1;
-  object-fit: cover;
+  max-width: 100%;
+  /* flex-basis: 1; */
+  
 }
 
 li:last-child {
