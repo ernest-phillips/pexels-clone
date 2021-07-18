@@ -20,16 +20,13 @@ class App extends Component {
       headers: myHeaders,
       redirect: "follow",
     };
-    fetch(
-      "https://api.pexels.com/v1/curated?page=1&per_page=5",
-      requestOptions
-    )
+    fetch("https://api.pexels.com/v1/curated?page=1&per_page=5", requestOptions)
       .then((response) => response.json())
       .then((json) => {
         this.setState({
           isLoaded: true,
           photos: json.photos,
-          next_page: json.next_page
+          next_page: json.next_page,
         });
       })
       .then((response) => console.log(response))
@@ -38,37 +35,13 @@ class App extends Component {
 
   render() {
     let { isLoaded, photos, next_page } = this.state;
-    
+
     if (!isLoaded) {
       return <div>Loading...</div>;
     } else {
       return (
         <div className="App">
           <div className="photo-grid">
-            <ul>
-              {photos.map((photo) => (
-                <li key={photo.id} className="photo">
-                  <a href={photo.src.large2x}>
-                    <img
-                      src={photo.src.large}
-                      alt={"Photo by " + photo.photographer}
-                    ></img>
-                  </a>
-                </li>
-              ))}
-            </ul>
-            <ul>
-              {photos.map((photo) => (
-                <li key={photo.id} className="photo">
-                  <a href={photo.src.large2x}>
-                    <img
-                      src={photo.src.large}
-                      alt={"Photo by " + photo.photographer}
-                    ></img>
-                  </a>
-                </li>
-              ))}
-            </ul>
             <ul>
               {photos.map((photo) => (
                 <li key={photo.id} className="photo">
