@@ -20,7 +20,7 @@ class App extends Component {
       headers: myHeaders,
       redirect: "follow",
     };
-    fetch("https://api.pexels.com/v1/curated?page=1&per_page=5", requestOptions)
+    fetch("https://api.pexels.com/v1/curated?page=1&per_page=30", requestOptions)
       .then((response) => response.json())
       .then((json) => {
         this.setState({
@@ -41,7 +41,9 @@ class App extends Component {
     } else {
       return (
         <div className="App">
-          <div className="photo-grid">
+          
+          <div className="container">
+          <header className="App-header"></header>
             <ul>
               {photos.map((photo) => (
                 <li key={photo.id} className="photo">
