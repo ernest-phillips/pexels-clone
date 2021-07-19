@@ -39,5 +39,6 @@
   },
   "devDependencies": {
     "netlify-cli": "^2.37.0"
-  }
+  },
+  "homepage": "."
 }
