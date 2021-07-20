@@ -20,7 +20,7 @@ class App extends Component {
       headers: myHeaders,
       redirect: "follow",
     };
-    fetch("https://api.pexels.com/v1/curated?page=1&per_page=30", requestOptions)
+    fetch("https://api.pexels.com/v1/curated?page=1&per_page=31", requestOptions)
       .then((response) => response.json())
       .then((json) => {
         this.setState({
@@ -56,11 +56,12 @@ class App extends Component {
                 </li>
               ))}
             </ul>
+            <div>
+            <button className="more-btn">More</button>
+          </div>
           </div>
 
-          <div>
-            <button onClick={console.log(next_page)}>More</button>
-          </div>
+          
         </div>
       );
     }

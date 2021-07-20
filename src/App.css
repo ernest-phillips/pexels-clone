@@ -20,12 +20,11 @@ a {
 }
 .App {
   display: flex;
-  text-align: center;
   justify-content: center;
-  flex-flow: column nowrap;
   width: 100%;
   margin-right: 0;
   margin-left: 0;
+  /* background-color: rgb(150, 184, 184); */
 }
 
 .App-logo {
@@ -61,7 +60,9 @@ a {
 
 /* Photo grid container */
 .container {
-  max-width: 1428px;
+  width: 1415px;
+  /* background-color: green; */
+
   /* padding-right: 2rem; */
 }
 
@@ -72,7 +73,7 @@ ul {
   width: auto;
   height: 7000px;
   /* background-color: #565e6d; */
-  padding-left: 0px;
+  padding-left: 1.5rem;
   margin: 0;
 }
 
@@ -80,7 +81,7 @@ li {
   /* flex-shrink: 0; */
   margin-right: 3px;
   margin-bottom: 3px;
-  background-color: antiquewhite;
+  /* background-color: antiquewhite; */
   vertical-align: bottom;
   height: fit-content;
   margin: 1.25rem;
@@ -101,4 +102,15 @@ img {
 
 li:last-child {
   flex-grow: 0;
+}
+
+button {
+  width: 100%;
+  background-color: darkcyan;
+  color: aliceblue;
+  font-size: 4rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  border: none;
+  margin-bottom: 2rem;
 }
