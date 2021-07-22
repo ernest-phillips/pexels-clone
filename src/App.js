@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 
 const API_KEY = process.env.REACT_APP_API_KEY;
+let BASE_URL = "https://api.pexels.com/v1/curated?page=1&per_page=10";
 class App extends Component {
   constructor(props) {
     super(props);
@@ -9,6 +10,8 @@ class App extends Component {
       photos: [],
       isLoaded: false,
     };
+
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
@@ -20,7 +23,7 @@ class App extends Component {
       headers: myHeaders,
       redirect: "follow",
     };
-    fetch("https://api.pexels.com/v1/curated?page=1&per_page=31", requestOptions)
+    fetch(BASE_URL, requestOptions)
       .then((response) => response.json())
       .then((json) => {
         this.setState({
@@ -29,21 +32,41 @@ class App extends Component {
           next_page: json.next_page,
         });
       })
-      .then((response) => console.log(response))
+
       .catch((error) => console.log("error", error));
   }
 
+  handleClick() {
+    let myHeaders = new Headers();
+    myHeaders.append("Authorization", API_KEY);
+
+    let requestOptions = {
+      method: "GET",
+      headers: myHeaders,
+      redirect: "follow",
+    };
+
+    fetch(this.state.next_page, requestOptions)
+      .then((response) => response.json())
+      .then((json) => {
+        this.setState((prevState) => ({
+          isLoaded: true,
+          photos: prevState.photos.concat(json.photos),
+          next_page: json.next_page,
+        }));
+      });
+  }
+
   render() {
-    let { isLoaded, photos, next_page } = this.state;
+    let { isLoaded, photos } = this.state;
 
     if (!isLoaded) {
       return <div>Loading...</div>;
     } else {
       return (
         <div className="App">
-          
           <div className="container">
-          <header className="App-header"></header>
+            <header className="App-header"></header>
             <ul>
               {photos.map((photo) => (
                 <li key={photo.id} className="photo">
@@ -56,12 +79,13 @@ class App extends Component {
                 </li>
               ))}
             </ul>
+            <div>{this.state.next_page}</div>
             <div>
-            <button className="more-btn">More</button>
+              <button onClick={this.handleClick} className="more-btn">
+                More
+              </button>
+            </div>
           </div>
-          </div>
-
-          
         </div>
       );
     }
