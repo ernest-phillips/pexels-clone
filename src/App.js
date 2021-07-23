@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 
 const API_KEY = process.env.REACT_APP_API_KEY;
-let BASE_URL = "https://api.pexels.com/v1/curated?page=1&per_page=10";
+let BASE_URL = "https://api.pexels.com/v1/curated?page=1&per_page=9";
 class App extends Component {
   constructor(props) {
     super(props);
@@ -60,6 +60,8 @@ class App extends Component {
   render() {
     let { isLoaded, photos } = this.state;
 
+    let height = (photos.length * 650) / 3;
+
     if (!isLoaded) {
       return <div>Loading...</div>;
     } else {
@@ -67,7 +69,7 @@ class App extends Component {
         <div className="App">
           <div className="container">
             <header className="App-header"></header>
-            <ul>
+            <ul className="list" style={{ height: height }}>
               {photos.map((photo) => (
                 <li key={photo.id} className="photo">
                   <a href={photo.src.large2x}>
@@ -79,7 +81,7 @@ class App extends Component {
                 </li>
               ))}
             </ul>
-            <div>{this.state.next_page}</div>
+
             <div>
               <button onClick={this.handleClick} className="more-btn">
                 More
